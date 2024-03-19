@@ -1,4 +1,4 @@
-# 苍穹外卖-Vichayturen改
+# 红杉树超市
 
 ## 1 部署流程
 
@@ -6,7 +6,7 @@
 ```shell
 docker run -itd --name mysql57 -p 3306:3306 -p 33060:33060 -e MYSQL_ROOT_PASSWORD="root" mysql:5.7
 ```
-运行sky.sql导入数据。
+运行redwood.sql导入数据。
 ### 1.2 Redis
 ```shell
 docker run -itd --name some-redis -p 6379:6379 redis
@@ -29,3 +29,7 @@ docker run -itd --name minio -p 9000:9000 -p 9001:9001 -e MINIO_ROOT_USER="admin
 ### 1.5 后端工程
 maven打包运行本项目。
 
+## TODO
+- 添加elasticsearch检索服务
+- 拆分为微服务
+- 添加推荐系统
