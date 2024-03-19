@@ -1,0 +1,78 @@
+server:
+  port: 8080
+
+spring:
+  profiles:
+    active: dev
+  main:
+    allow-circular-references: true
+  datasource:
+    druid:
+      driver-class-name: ${redwood.datasource.driver-class-name}
+      url: jdbc:mysql://${redwood.datasource.host}:${redwood.datasource.port}/${redwood.datasource.database}?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8&zeroDateTimeBehavior=convertToNull&useSSL=false&allowPublicKeyRetrieval=true
+      username: ${redwood.datasource.username}
+      password: ${redwood.datasource.password}
+  redis:
+    host: ${redwood.redis.host}
+    port: ${redwood.redis.port}
+#    password: ${redwood.redis.password}
+    database: ${redwood.redis.database}
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 100MB
+  cloud:
+    nacos:
+      server-addr: 127.0.0.1:8848
+
+mybatis:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.redwood.entity
+  configuration:
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+
+logging:
+  level:
+    com:
+      redwood:
+        mapper: debug
+        service: info
+        controller: info
+
+redwood:
+  jwt:
+    # 设置jwt签名加密时使用的秘钥
+    admin-secret-key: itcast
+    # 设置jwt过期时间
+    admin-ttl: 7200000
+    # 设置前端传递过来的令牌名称
+    admin-token-name: token
+    user-secret-key: itheima
+    user-ttl: 7200000
+    user-token-name: authentication
+  alioss:
+    endpoint: ${redwood.alioss.endpoint}
+    access-key-id: ${redwood.alioss.access-key-id}
+    access-key-secret: ${redwood.alioss.access-key-secret}
+    bucket-name: ${redwood.alioss.bucket-name}
+  wechat:
+    appid: ${redwood.wechat.appid}
+    secret: ${redwood.wechat.secret}
+    mchid : ${redwood.wechat.mchid}
+    mchSerialNo: ${redwood.wechat.mchSerialNo}
+    privateKeyFilePath: ${redwood.wechat.privateKeyFilePath}
+    apiV3Key: ${redwood.wechat.apiV3Key}
+    weChatPayCertFilePath: ${redwood.wechat.weChatPayCertFilePath}
+    notifyUrl: ${redwood.wechat.notifyUrl}
+    refundNotifyUrl: ${redwood.wechat.refundNotifyUrl}
+  shop:
+    address: 北京市海淀区上地十街10号
+  baidu:
+    ak: your-ak
+  minio:
+    endpoint: ${redwood.minio.endpoint}
+    accessKey: ${redwood.minio.accessKey}
+    secretKey: ${redwood.minio.secretKey}
+    bucketName: ${redwood.minio.bucketName}
