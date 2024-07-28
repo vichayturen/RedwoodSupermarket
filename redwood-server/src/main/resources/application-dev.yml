@@ -6,19 +6,14 @@ redwood:
     database: redwood_supermarket
     username: root
     password: root
-  alioss:
-    endpoint: oss-cn-beijing.aliyuncs.com
-    access-key-id: your-access-key-id
-    access-key-secret: your-access-key-secret
-    bucket-name: your-bucket-name
   redis:
     host: localhost
     port: 6379
 #    password: 123456
     database: 10
   wechat:
-    appid: wxf7a3e980a27c2572
-    secret: 2bcf93295d2629f6a11fbc13ab92dcd9
+    appid: xxxxxxxxxx
+    secret: xxxxxxxxxxx
     mchid : 1561414331
     mchSerialNo: 4B3B3DC35414AD50B1B755BAF8DE9CC7CF407606
     privateKeyFilePath: D:\pay\apiclient_key.pem
@@ -30,4 +25,4 @@ redwood:
     endpoint: http://127.0.0.1:9000
     accessKey: fwjqaoYiddnEv9RNhcky
     secretKey: uIKfjrdJfadQ7I5EekkqkE9nH8b5R4TbI9eWYBxa
-    bucketName: redwood-supermarket
+    bucketName: redwood_supermarket

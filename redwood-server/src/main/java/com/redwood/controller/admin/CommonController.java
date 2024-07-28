@@ -2,7 +2,6 @@ package com.redwood.controller.admin;
 
 import com.redwood.constant.MessageConstant;
 import com.redwood.result.Result;
-import com.redwood.utils.AliOssUtil;
 import com.redwood.utils.MinioUtil;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

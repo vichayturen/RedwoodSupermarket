@@ -52,11 +52,6 @@ redwood:
     user-secret-key: itheima
     user-ttl: 7200000
     user-token-name: authentication
-  alioss:
-    endpoint: ${redwood.alioss.endpoint}
-    access-key-id: ${redwood.alioss.access-key-id}
-    access-key-secret: ${redwood.alioss.access-key-secret}
-    bucket-name: ${redwood.alioss.bucket-name}
   wechat:
     appid: ${redwood.wechat.appid}
     secret: ${redwood.wechat.secret}

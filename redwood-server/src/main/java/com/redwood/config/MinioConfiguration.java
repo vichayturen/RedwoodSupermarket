@@ -1,10 +1,7 @@
 package com.redwood.config;
 
-import com.redwood.properties.AliOssProperties;
 import com.redwood.properties.MinioProperties;
-import com.redwood.utils.AliOssUtil;
 import com.redwood.utils.MinioUtil;
-import io.minio.MinioClient;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;

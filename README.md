@@ -16,7 +16,7 @@ docker run -itd --name some-redis -p 6379:6379 redis
 ```shell
 docker run -itd --name minio -p 9000:9000 -p 9001:9001 -e MINIO_ROOT_USER="admin" -e MINIO_ROOT_PASSWORD="admin123" bitnami/minio
 ```
-1. 创建bucket：sky-take-out。把图片文件上传进去。
+1. 创建bucket：redwood_supermarket。把图片文件上传进去。
 2. 设置bucket权限，匿名可读。
 3. 创建accesskey和secretkey，复制到application.yml中。
 
