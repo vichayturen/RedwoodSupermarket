@@ -69,6 +69,12 @@
         order by order_time desc
     </select>
 
+    <select id="queryByUserId" resultType="Orders">
+        SELECT * FROM (
+            SELECT * FROM orders ORDER BY order_time DESC LIMIT 20
+        ) as subquery ORDER BY order_time;
+    </select>
+
     <select id="sumByMap" resultType="java.lang.Double">
         select sum(amount) from orders
         <where>

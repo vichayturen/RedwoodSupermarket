@@ -115,6 +115,14 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.microsoft.onnxruntime/onnxruntime -->
+        <dependency>
+            <groupId>com.microsoft.onnxruntime</groupId>
+            <artifactId>onnxruntime</artifactId>
+            <version>1.18.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>

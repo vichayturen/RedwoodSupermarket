@@ -2,18 +2,15 @@ package com.redwood.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.redwood.algrithm.Recommendation;
 import com.redwood.constant.MessageConstant;
 import com.redwood.constant.StatusConstant;
 import com.redwood.dto.DishDTO;
 import com.redwood.dto.DishPageQueryDTO;
-import com.redwood.entity.Dish;
-import com.redwood.entity.DishFlavor;
-import com.redwood.entity.Setmeal;
+import com.redwood.dto.OrdersPageQueryDTO;
+import com.redwood.entity.*;
 import com.redwood.exception.DeletionNotAllowedException;
-import com.redwood.mapper.DishFlavorMapper;
-import com.redwood.mapper.DishMapper;
-import com.redwood.mapper.SetmealDishMapper;
-import com.redwood.mapper.SetmealMapper;
+import com.redwood.mapper.*;
 import com.redwood.result.PageResult;
 import com.redwood.service.DishService;
 import com.redwood.vo.DishVO;
@@ -38,6 +35,13 @@ public class DishServiceImpl implements DishService {
     private SetmealDishMapper setmealDishMapper;
     @Autowired
     private SetmealMapper setmealMapper;
+    @Autowired
+    private OrderDetailMapper orderDetailMapper;
+    @Autowired
+    private Recommendation recommendation;
+
+    private final int[] defaultRecommendation = new int[]{1, 2, 3, 4,
+            5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20};
 
     /**
      * 新增菜品和对应的口味
@@ -225,5 +229,50 @@ public class DishServiceImpl implements DishService {
         }
 
         return dishVOList;
+    }
+
+    /**
+     * 根据用户交互历史推荐菜品
+     * @param userId
+     * @return
+     */
+    public List<DishVO> listWithRecommendation(Long userId) {
+        List<Integer> dishIds = orderDetailMapper.getRecentByUserId(userId);
+        int[] rerankedDishIds;
+        if (dishIds.isEmpty()) {
+            rerankedDishIds = this.defaultRecommendation;
+        } else {
+            long[][] inputs = new long[1][dishIds.size()];
+            for (int i = 0; i < dishIds.size(); i++) {
+                inputs[0][i] = dishIds.get(i);
+            }
+            int[][] recommendationResult = recommendation.getRecommendation(inputs);
+            rerankedDishIds = recommendationResult[0];
+        }
+
+        List<DishVO> dishVOList = new ArrayList<>();
+
+        for (int dishId : rerankedDishIds) {
+            //根据菜品id查询对应的口味
+            Dish dish = dishMapper.getById((long) dishId);
+
+            DishVO dishVO = new DishVO();
+            BeanUtils.copyProperties(dish ,dishVO);
+
+            dishVOList.add(dishVO);
+        }
+
+        return dishVOList;
+    }
+
+    /**
+     * 根据用户query搜索菜品
+     *
+     * @param query 搜索关键词
+     * @return Result<List<DishVO>>
+     */
+    public List<DishVO> listWithSearch(String query) {
+        // TODO: implement this
+        return null;
     }
 }

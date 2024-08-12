@@ -1,6 +1,7 @@
 package com.redwood.controller.user;
 
 import com.redwood.constant.StatusConstant;
+import com.redwood.context.BaseContext;
 import com.redwood.entity.Dish;
 import com.redwood.result.Result;
 import com.redwood.service.DishService;
@@ -53,6 +54,32 @@ public class DishController {
         list = dishService.listWithFlavor(dish);
         redisTemplate.opsForValue().set(key, list);
 
+        return Result.success(list);
+    }
+
+    /**
+     * 根据用户交互历史推荐菜品
+     *
+     * @return Result<List<DishVO>>
+     */
+    @GetMapping("/recommend")
+    @ApiOperation("根据用户交互历史推荐菜品")
+    public Result<List<DishVO>> recommend() {
+        Long userId = BaseContext.getCurrentId();
+        List<DishVO> list = dishService.listWithRecommendation(userId);
+        return Result.success(list);
+    }
+
+    /**
+     * 根据用户query搜索菜品
+     *
+     * @param query 搜索关键词
+     * @return Result<List<DishVO>>
+     */
+    @GetMapping("/search")
+    @ApiOperation("根据用户query搜索菜品")
+    public Result<List<DishVO>> search(String query) {
+        List<DishVO> list = dishService.listWithSearch(query);
         return Result.success(list);
     }
 

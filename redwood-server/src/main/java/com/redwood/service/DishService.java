@@ -69,4 +69,19 @@ public interface DishService {
      * @return
      */
     List<DishVO> listWithFlavor(Dish dish);
+
+    /**
+     * 根据用户交互历史推荐菜品
+     * @param userId
+     * @return
+     */
+    List<DishVO> listWithRecommendation(Long userId);
+
+    /**
+     * 根据用户query搜索菜品
+     *
+     * @param query 搜索关键词
+     * @return Result<List<DishVO>>
+     */
+    List<DishVO> listWithSearch(String query);
 }

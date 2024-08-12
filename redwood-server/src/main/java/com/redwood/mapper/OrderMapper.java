@@ -40,6 +40,12 @@ public interface OrderMapper {
     Page<Orders> pageQuery(OrdersPageQueryDTO ordersPageQueryDTO);
 
     /**
+     * 按照用户id查询并按下单时间排序
+     * @param ordersPageQueryDTO
+     */
+    List<Orders> queryByUserId(OrdersPageQueryDTO ordersPageQueryDTO);
+
+    /**
      * 根据id查询订单
      * @param id
      */

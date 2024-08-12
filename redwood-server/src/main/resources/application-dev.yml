@@ -22,7 +22,9 @@ redwood:
     notifyUrl: https://58869fb.r2.cpolar.top/notify/paySuccess
     refundNotifyUrl: https://58869fb.r2.cpolar.top/notify/refundSuccess
   minio:
-    endpoint: http://127.0.0.1:9000
-    accessKey: fwjqaoYiddnEv9RNhcky
-    secretKey: uIKfjrdJfadQ7I5EekkqkE9nH8b5R4TbI9eWYBxa
-    bucketName: redwood_supermarket
+    endpoint: http://127.0.0.1:19000
+    accessKey: 5RL6v4qf27eox2xUrmXR
+    secretKey: 75ELifz0cnobzu9UlxmFGXUcXeKlZB0lQUZl8GH3
+    bucketName: redwood-supermarket
+  onnx:
+    device: cpu

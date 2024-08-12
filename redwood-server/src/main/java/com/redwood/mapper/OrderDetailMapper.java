@@ -21,4 +21,11 @@ public interface OrderDetailMapper {
      */
     @Select("select * from order_detail where order_id = #{orderId}")
     List<OrderDetail> getByOrderId(Long orderId);
+
+    /**
+     * 根据用户id查询历史dish id
+     * @param userId
+     * @return
+     */
+    List<Integer> getRecentByUserId(Long userId);
 }
